@@ -5,7 +5,8 @@ let socket;
 let user_id = "";
 let meeting_id = "";
 
-const SERVER = 'http://localhost:5000';
+/* const SERVER = 'http://localhost:5000'; */
+const SERVER = 'https://webrtcalan.herokuapp.com'
 
 export const finish = () => {
   socket.close()

@@ -27,7 +27,7 @@ const MeetingDetail = ({ idMeet, username, files, setFiles }) => {
         formData.append("zipfile", fileUpload);
         formData.append("meeting_id", idMeet);
         formData.append("username", username);
-        const res = await fetch('http://localhost:5000/attachimg', {
+        const res = await fetch('https://webrtcalan.herokuapp.com/attachimg', {
             method: 'POST',
             mode: 'no-cors',
             body: formData

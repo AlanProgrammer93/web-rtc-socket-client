@@ -175,7 +175,7 @@ async function videoProcess(newVideoState, setShowVideoState) {
     setShowVideoState(0)
 
     removeVideoStream(rtp_vid_senders);
-    console.log("paso por el si", video_st);
+
     return;
   }
   if (newVideoState == video_states.Camera) {
@@ -204,6 +204,7 @@ async function videoProcess(newVideoState, setShowVideoState) {
       });
       vstream.oninactive = (e) => {
         removeVideoStream(rtp_vid_senders);
+        setShowVideoState(0)
       };
     }
     if (vstream && vstream.getVideoTracks().length > 0) {
