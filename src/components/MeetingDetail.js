@@ -27,7 +27,7 @@ const MeetingDetail = ({ idMeet, username, files, setFiles }) => {
         formData.append("zipfile", fileUpload);
         formData.append("meeting_id", idMeet);
         formData.append("username", username);
-        const res = await fetch('https://webrtcalan.herokuapp.com/attachimg', {
+        await fetch('https://webrtcalan.herokuapp.com/attachimg', {
             method: 'POST',
             mode: 'no-cors',
             body: formData
@@ -70,7 +70,7 @@ const MeetingDetail = ({ idMeet, username, files, setFiles }) => {
                                     files && files.map((file, index) => (
                                         <>
                                             <div className="left-align" key={index} style={{ display: 'flex', alignItems: 'center' }}>
-                                                <img src={`http://localhost:5000/${file.filePath}`} style={{ height: '40px', width: '40px' }} className="caller-image circle" />
+                                                <img src={`https://webrtcalan.herokuapp.com/${file.filePath}`} alt="" style={{ height: '40px', width: '40px' }} className="caller-image circle" />
                                                 <div style={{ fontWeight: '600', margin: '0 5px' }}>
                                                     {file.username}
                                                 </div>

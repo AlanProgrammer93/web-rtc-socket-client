@@ -1,4 +1,4 @@
-let serverProcess;
+//let serverProcess;
 let local_div;
 
 let peers_connection = [];
@@ -52,9 +52,9 @@ async function setOffer(connid, SDP_function) {
 function connection_status(connection) {
   if (
     connection &&
-    (connection.connectionState == "new" ||
-      connection.connectionState == "connecting" ||
-      connection.connectionState == "connected")
+    (connection.connectionState === "new" ||
+      connection.connectionState === "connecting" ||
+      connection.connectionState === "connected")
   ) {
     return true;
   } else {
@@ -96,7 +96,7 @@ export const setNewConnection = (connid, SDP_function) => {
       remote_aud_stream[connid] = new MediaStream();
     }
 
-    if (event.track.kind == "video") {
+    if (event.track.kind === "video") {
       remote_vid_stream[connid]
         .getVideoTracks()
         .forEach((t) => remote_vid_stream[connid].removeTrack(t));
@@ -105,7 +105,7 @@ export const setNewConnection = (connid, SDP_function) => {
       remoteVideoPlayer.srcObject = null;
       remoteVideoPlayer.srcObject = remote_vid_stream[connid];
       remoteVideoPlayer.load();
-    } else if (event.track.kind == "audio") {
+    } else if (event.track.kind === "audio") {
       remote_aud_stream[connid]
         .getAudioTracks()
         .forEach((t) => remote_aud_stream[connid].removeTrack(t));
@@ -120,8 +120,8 @@ export const setNewConnection = (connid, SDP_function) => {
   peers_connection[connid] = connection;
 
   if (
-    video_st == video_states.Camera ||
-    video_st == video_states.ScreenShare
+    video_st === video_states.Camera ||
+    video_st === video_states.ScreenShare
   ) {
     if (videoCamTrack) {
       updateMediaSenders(videoCamTrack, rtp_vid_senders);
@@ -136,7 +136,7 @@ export const initLocalVideo = () => {
 }
 
 export const videoCamOnOff = async (setShowVideoState) => {
-  if (video_st == video_states.Camera) {
+  if (video_st === video_states.Camera) {
     await videoProcess(video_states.None, setShowVideoState);
   } else {
     await videoProcess(video_states.Camera, setShowVideoState);
@@ -144,7 +144,7 @@ export const videoCamOnOff = async (setShowVideoState) => {
 }
 
 export const screenShareOnOf = async (setShowVideoState) => {
-  if (video_st == video_states.ScreenShare) {
+  if (video_st === video_states.ScreenShare) {
     await videoProcess(video_states.None, setShowVideoState);
   } else {
     await videoProcess(video_states.ScreenShare, setShowVideoState);
@@ -170,7 +170,7 @@ function removeVideoStream(rtp_vid_senders) {
 }
 
 async function videoProcess(newVideoState, setShowVideoState) {
-  if (newVideoState == video_states.None) {
+  if (newVideoState === video_states.None) {
     video_st = newVideoState;
     setShowVideoState(0)
 
@@ -178,14 +178,14 @@ async function videoProcess(newVideoState, setShowVideoState) {
 
     return;
   }
-  if (newVideoState == video_states.Camera) {
+  if (newVideoState === video_states.Camera) {
     setShowVideoState(newVideoState)
     video_st = newVideoState;
   }
 
   try {
     var vstream = null;
-    if (newVideoState == video_states.Camera) {
+    if (newVideoState === video_states.Camera) {
       vstream = await navigator.mediaDevices.getUserMedia({
         video: {
           width: 1920,
@@ -193,7 +193,7 @@ async function videoProcess(newVideoState, setShowVideoState) {
         },
         audio: false,
       });
-    } else if (newVideoState == video_states.ScreenShare) {
+    } else if (newVideoState === video_states.ScreenShare) {
       setShowVideoState(2)
       vstream = await navigator.mediaDevices.getDisplayMedia({
         video: {
@@ -221,9 +221,9 @@ async function videoProcess(newVideoState, setShowVideoState) {
     return;
   }
   video_st = newVideoState;
-  if (newVideoState == video_states.Camera) {
+  if (newVideoState === video_states.Camera) {
     setShowVideoState(1)
-  } else if (newVideoState == video_states.ScreenShare) {
+  } else if (newVideoState === video_states.ScreenShare) {
     setShowVideoState(2)
   }
 }

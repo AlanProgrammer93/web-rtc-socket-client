@@ -33,7 +33,7 @@ const Home = () => {
         }
         setUsername(user_id)
         init(user_id, idMeet, setUsers, setMessages, setFiles);
-    }, [])
+    }, [history, idMeet])
 
     const showVideo = () => {
         videoCamOnOff(setShowVideoState)
@@ -150,7 +150,7 @@ const Home = () => {
                             </div>
                         </div>
                         <div className="in-call-chat-wrap mr-3 ml-3 pl-3 pr-3" style={{ fontSize: "14px", height: "69vh", overflowY: "scroll" }}>
-                            <div className="in-call-wrap-up" style={{ display: showChats == 1 ? "flex" : "none", flexDirection: 'column' }}>
+                            <div className="in-call-wrap-up" style={{ display: showChats === 1 ? "flex" : "none", flexDirection: 'column' }}>
                                 <div className="in-call-wrap d-flex justify-content-between align-items-center mb-3" >
                                     <div className="participant-img-name-wrap display-center cursor-pointer">
                                         <div className="participant-img">
@@ -203,7 +203,7 @@ const Home = () => {
                                     ))
                                 }
                             </div>
-                            <div className="chat-show-wrap text-secondary  flex-column justify-content-between h-100" style={{ fontSize: "14px", display: showChats == 2 ? "flex" : "none" }}>
+                            <div className="chat-show-wrap text-secondary  flex-column justify-content-between h-100" style={{ fontSize: "14px", display: showChats === 2 ? "flex" : "none" }}>
                                 <div className="chat-message-show" id="messages">
                                     {
                                         messages.map((message, index) => (

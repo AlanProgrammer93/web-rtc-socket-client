@@ -20,7 +20,7 @@ const Login = () => {
         <div>
             <nav className="navbar navbar-expand-md fixed-top">
                 <img src="/images/logo-azul.png" width={100} className="logo" alt="" />
-                <a href="#" className ="navbar-brand text-dark">Web RTC</a>
+                <p  className="navbar-brand text-dark mt-3">Web RTC</p>
             </nav>
 
             <main>
@@ -35,7 +35,7 @@ const Login = () => {
                                 <button 
                                     onClick={startMeet} 
                                     className="btn btn-lg text-light font-weight-bold display-center new-meeting" 
-                                    style={{backgroundColor: "#01796b"}}
+                                    style={{backgroundColor: "deepskyblue"}}
                                 >
                                     <span className="material-icons mr-2">
                                         video_call
@@ -59,7 +59,7 @@ const Login = () => {
                                     />
                                 </button>
                             </li>
-                            <li className="text-dark font-weight-bold cursor-pointer pl-2 join-action" onClick={joinMeet}>Unirse</li>
+                            <li className="text-dark border ml-2 font-weight-bold cursor-pointer pl-2 join-action" onClick={joinMeet}>Unirse</li>
                         </ul>
                     </div>
                     <div className="container col-md-6 w-50">

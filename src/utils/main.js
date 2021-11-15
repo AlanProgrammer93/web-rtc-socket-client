@@ -46,7 +46,7 @@ export const init = (userId, idMeet, setUsers, setMessages, setFiles) => {
     socket.on("connect", () => {
         if (socket.connected) {
             initLocalVideo();
-            if (user_id != "" && meeting_id != "") {
+            if (user_id !== "" && meeting_id !== "") {
               socket.emit("userconnect", {
                 displayName: user_id,
                 meetingid: meeting_id,
